@@ -11,16 +11,16 @@ services:
       - "27017:27017"
 
   api:
-    container_name: api-container
+    container_name: signup-api-container
     build: .
-    image: clean-node-api
+    image: signup-api
     restart: always
     command: yarn debugs
     volumes:
-      - ./dist:/usr/src/clean-node-api/dist
-      - ./package.json:/usr/src/clean-node-api/package.json
+      - ./dist:/usr/src/signup-api/dist
+      - ./package.json:/usr/src/signup-api/package.json
     ports:
-      - "5050:5050"
+      - "5353:5353"
       - "9222:9222"
     links:
       - mongo

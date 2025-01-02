@@ -1,5 +1,5 @@
 export default {
-    mongoUrl: process.env.MONGO_URL ,
-    port: process.env.PORT || 5050,
-    jwtSecret: process.env.JWT_SECRET || '8f4j3c-21nb=c@!ç'
-}
+  mongoUrl: process.env.MONGO_URL || "mongodb://mongo:27017/register-api",
+  port: process.env.PORT || 5353,
+  jwtSecret: process.env.JWT_SECRET || "ç.`!jjd3o",
+};
