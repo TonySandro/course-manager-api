@@ -1,9 +1,9 @@
 import { SignUpController } from "../../presentation/controllers/signup/signup";
 import { DbAddAccount } from "../../data/usecases/add-account/db-add-account";
-import { AccountMongoRepository } from "../../infra/db/mongodb/account-repository/account-mongo-repository";
+import { AccountMongoRepository } from "../../infra/database/mongodb/account-repository/account-mongo-repository";
 import { Controller } from "../../presentation/protocols";
 import { LogControllerDecorator } from "../decorators/log-controller";
-import { LogMongoRepository } from "../../infra/db/mongodb/log-repository/log-mongo-repository";
+import { LogMongoRepository } from "../../infra/database/mongodb/log-repository/log-mongo-repository";
 import { makeSignUpValidation } from "./signup-validation";
 import { BcryptAdapter } from "./login/login-factory-protocols";
 
