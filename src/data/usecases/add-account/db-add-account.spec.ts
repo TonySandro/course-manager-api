@@ -29,6 +29,10 @@ const makeFakeAccount = (): AccountModel => ({
   name: "valid_name",
   email: "valid_email",
   password: "hashed_password",
+  accessToken: "",
+  createdAt: new Date("2025-01-03"),
+  updatedAt: new Date("2025-01-03"),
+  deletedAt: null,
 });
 
 const makeFakeAccountData = (): AddAccountModel => ({

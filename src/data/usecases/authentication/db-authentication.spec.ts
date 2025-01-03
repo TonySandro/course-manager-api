@@ -12,6 +12,10 @@ const makeFakeAccountModel = (): AccountModel => ({
   name: "any_name",
   email: "any_email@email.com",
   password: "hashed_password",
+  accessToken: "",
+  createdAt: new Date("2025-01-03"),
+  updatedAt: new Date("2025-01-03"),
+  deletedAt: null,
 });
 
 const makeFakeAccount = () => ({
@@ -115,7 +119,9 @@ describe("DbAuthentication UseCase", () => {
     const { sut, loadAccountByEmailRepositoryStub } = makeSut();
     jest
       .spyOn(loadAccountByEmailRepositoryStub, "loadByEmail")
-      .mockReturnValueOnce(null);
+      .mockReturnValueOnce(
+        new Promise((resolve) => resolve(null as unknown as AccountModel))
+      );
     const accessToken = await sut.auth(makeFakeAccount());
 
     expect(accessToken).toBeNull();
