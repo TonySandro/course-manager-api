@@ -1,7 +1,7 @@
-import { MongoHelper } from "../infra/database/mongodb/helpers/mongo-helper";
 import env from "./config/env";
+import { AppDataSource } from "./config/typeorm.config";
 
-MongoHelper.connect(env.mongoUrl)
+AppDataSource.initialize()
   .then(async () => {
     const app = (await import("./config/app")).default;
     app.listen(env.port, () =>

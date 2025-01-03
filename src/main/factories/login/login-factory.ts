@@ -1,32 +1,32 @@
 import env from "../../config/env";
 import { makeLoginValidation } from "./login-validation-factory";
 import {
-  AccountMongoRepository,
+  AccountMysqlRepository,
   BcryptAdapter,
   Controller,
   DbAuthentication,
   JwtAdapter,
   LogControllerDecorator,
   LoginController,
-  LogMongoRepository,
+  LogMysqlRepository,
 } from "./login-factory-protocols";
 
 export const makeLoginController = (): Controller => {
   const salt = 12;
   const bcryptAdapter = new BcryptAdapter(salt);
   const jwtAdapter = new JwtAdapter(env.jwtSecret);
-  const accountMongoRepository = new AccountMongoRepository();
+  const accountMysqlRepository = new AccountMysqlRepository();
   const dbAuthentication = new DbAuthentication(
-    accountMongoRepository,
+    accountMysqlRepository,
     bcryptAdapter,
     jwtAdapter,
-    accountMongoRepository
+    accountMysqlRepository
   );
   const loginController = new LoginController(
     dbAuthentication,
     makeLoginValidation()
   );
 
-  const logMongoRepository = new LogMongoRepository();
-  return new LogControllerDecorator(loginController, logMongoRepository);
+  const logMysqlRepository = new LogMysqlRepository();
+  return new LogControllerDecorator(loginController, logMysqlRepository);
 };
