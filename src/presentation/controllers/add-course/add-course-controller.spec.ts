@@ -9,8 +9,6 @@ const makeFakeRequest = (): HttpRequest => ({
     description: "Learn advanced concepts of JavaScript...",
     price: 49.99,
     image_url: "https://example.com/images/advanced-javascript-course.jpg",
-    created_at: new Date("2023-01-01T10:00:00Z"),
-    updated_at: new Date("2023-01-10T12:00:00Z"),
   },
 });
 
