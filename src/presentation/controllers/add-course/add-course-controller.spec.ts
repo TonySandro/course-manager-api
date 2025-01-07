@@ -68,6 +68,19 @@ const makeSut = (): SutTypes => {
 };
 
 describe("Add Course Controller", () => {
+  test("Should call AddAccount with correct values", async () => {
+    const { sut, addCourseStub } = makeSut();
+    const addSpy = jest.spyOn(addCourseStub, "add");
+
+    await sut.handle(makeFakeRequest());
+    expect(addSpy).toHaveBeenCalledWith({
+      title: "Advanced JavaScript Course",
+      description: "Learn advanced concepts of JavaScript...",
+      price: 49.99,
+      imageUrl: "https://example.com/images/advanced-javascript-course.jpg",
+    });
+  });
+
   test("Should return 500 if AddAccount throws", async () => {
     const { sut, addCourseStub } = makeSut();
     jest.spyOn(addCourseStub, "add").mockImplementationOnce(async () => {
