@@ -25,4 +25,11 @@ export const MysqlHelper = {
 
     await userRepository.remove(user);
   },
+
+  async deleteCourseByTitle(title: string): Promise<void> {
+    const courseRepository = AppDataSource.getRepository("courses");
+    const course = await courseRepository.findOne({ where: { title } });
+
+    await courseRepository.remove(course);
+  },
 };

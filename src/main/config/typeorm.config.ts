@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
 import { ErrorLog } from "../../domain/models/error-log";
 import { AccountModel } from "../../domain/models/account";
+import { CourseModel } from "../../domain/models/course";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -11,5 +12,5 @@ export const AppDataSource = new DataSource({
   database: "course-platform",
   synchronize: true,
   logging: false,
-  entities: [AccountModel, ErrorLog],
+  entities: [AccountModel, CourseModel, ErrorLog],
 });
