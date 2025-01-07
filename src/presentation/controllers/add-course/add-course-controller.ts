@@ -1,4 +1,9 @@
-import { badRequest, success } from "../../helpers/http/http-helper";
+import { AddCourse } from "../../../domain/usecases/add-course";
+import {
+  badRequest,
+  serverError,
+  success,
+} from "../../helpers/http/http-helper";
 import {
   Controller,
   HttpRequest,
@@ -7,14 +12,23 @@ import {
 } from "../../protocols";
 
 export class AddCourseController implements Controller {
-  constructor(private readonly validation: Validation) {}
+  constructor(
+    private readonly validation: Validation,
+    private readonly addCourse: AddCourse
+  ) {}
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
-    const error = this.validation.validate(httpRequest.body);
-    if (error) {
-      return badRequest(error);
-    }
+    try {
+      const error = this.validation.validate(httpRequest.body);
+      if (error) {
+        return badRequest(error);
+      }
 
-    return success({});
+      await this.addCourse.add(httpRequest.body);
+
+      return success({});
+    } catch (error) {
+      return serverError(error);
+    }
   }
 }
