@@ -7,9 +7,7 @@ export class ListCourseController implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const courses = await this.listCourse.list();
-
-      return success(courses);
+      return success(await this.listCourse.list());
     } catch (error) {
       return serverError(error);
     }
