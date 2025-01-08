@@ -14,7 +14,11 @@ describe("Sign Up Routes Middleware", () => {
   });
 
   afterEach(async () => {
-    await MysqlHelper.deleteAccountByEmail("tonysduarte@gmail.com");
+    await MysqlHelper.deleteEntityByField(
+      "accounts",
+      "email",
+      "tonysduarte@gmail.com"
+    );
   });
 
   describe("POST /signup", () => {

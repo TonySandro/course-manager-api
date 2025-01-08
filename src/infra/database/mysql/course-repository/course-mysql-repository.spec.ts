@@ -15,7 +15,11 @@ describe("Course Mysql repository", () => {
   });
 
   afterEach(async () => {
-    await MysqlHelper.deleteCourseByTitle("Advanced JavaScript Course");
+    await MysqlHelper.deleteEntityByField(
+      "courses",
+      "title",
+      "Advanced JavaScript Course"
+    );
   });
 
   test("Should return course if success", async () => {

@@ -15,7 +15,11 @@ describe("Account Mysql repository", () => {
   });
 
   afterEach(async () => {
-    await MysqlHelper.deleteAccountByEmail("any_email@email.com");
+    await MysqlHelper.deleteEntityByField(
+      "accounts",
+      "email",
+      "any_email@email.com"
+    );
   });
 
   test("Should return account if success", async () => {
