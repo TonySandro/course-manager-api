@@ -26,30 +26,17 @@ const makeListCourse = (): ListCourse => {
   return new ListCourseStub();
 };
 
-const makeValidation = (): Validation => {
-  class ValidationStub implements Validation {
-    validate(input: any): Error {
-      return null as unknown as Error;
-    }
-  }
-
-  return new ValidationStub();
-};
-
 interface SutTypes {
   sut: ListCourseController;
-  validationStub: Validation;
   listCourseStub: ListCourse;
 }
 
 const makeSut = (): SutTypes => {
   const listCourseStub = makeListCourse();
-  const validationStub = makeValidation();
   const sut = new ListCourseController(listCourseStub);
 
   return {
     sut,
-    validationStub,
     listCourseStub,
   };
 };
@@ -63,5 +50,12 @@ describe("List Course Controller", () => {
     const httpResponse = await sut.handle({});
 
     expect(httpResponse).toEqual(serverError(new ServerError("")));
+  });
+
+  test("Should return 200 on success", async () => {
+    const { sut } = makeSut();
+
+    const response = await sut.handle({});
+    expect(response).toEqual(success([makeFakeCourse()]));
   });
 });
