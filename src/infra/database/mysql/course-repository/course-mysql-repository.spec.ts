@@ -1,6 +1,13 @@
 import { CourseMysqlRepository } from "./course-mysql-repository";
 import { MysqlHelper } from "../helper/mysql-helper";
 
+const makeCourse = () => ({
+  title: "Advanced JavaScript Course",
+  description: "Learn advanced concepts of JavaScript...",
+  price: 49.99,
+  imageUrl: "https://example.com/images/javascript-course.jpg",
+});
+
 const makeSut = () => {
   return new CourseMysqlRepository();
 };
@@ -25,12 +32,7 @@ describe("Course Mysql repository", () => {
   test("Should return course if success", async () => {
     const sut = makeSut();
 
-    const course = await sut.add({
-      title: "Advanced JavaScript Course",
-      description: "Learn advanced concepts of JavaScript...",
-      price: 49.99,
-      imageUrl: "https://example.com/images/javascript-course.jpg",
-    });
+    const course = await sut.add(makeCourse());
 
     expect(course).toBeTruthy();
     expect(course.title).toBe("Advanced JavaScript Course");

@@ -1,7 +1,6 @@
 import { ListCourseController } from "./list-course-controller";
 import { CourseModel } from "./../../../domain/models/course";
 import { serverError, success } from "../../helpers/http/http-helper";
-import { Validation } from "../../protocols";
 import { ServerError } from "../../errors";
 import { ListCourse } from "../../../domain/usecases/list-course";
 
@@ -17,7 +16,7 @@ const makeFakeCourse = (): CourseModel => ({
 
 const makeListCourse = (): ListCourse => {
   class ListCourseStub implements ListCourse {
-    async list(courseId: string): Promise<CourseModel[]> {
+    async list(): Promise<CourseModel[]> {
       const FakeCourse = makeFakeCourse();
       return new Promise((resolve) => resolve([FakeCourse]));
     }
