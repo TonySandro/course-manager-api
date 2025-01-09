@@ -4,7 +4,9 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from "typeorm";
+import { ModuleModel } from "./module";
 
 @Entity("courses")
 export class CourseModel {
@@ -22,6 +24,12 @@ export class CourseModel {
 
   @Column({ type: "varchar", length: 500, nullable: true })
   imageUrl?: string;
+
+  @OneToMany(() => ModuleModel, (module) => module.course, {
+    cascade: true,
+    nullable: true,
+  })
+  modules?: ModuleModel[];
 
   @CreateDateColumn({ type: "timestamp" })
   createdAt: Date;

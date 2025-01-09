@@ -8,6 +8,17 @@ import {
 import { HttpRequest, Validation } from "../../protocols";
 import { MissingParamError, ServerError } from "../../errors";
 import { AddModule, AddModuleModel } from "../../../domain/usecases/add-module";
+import { CourseModel } from "../../../domain/models/course";
+
+const makeFakeCourse = (): CourseModel => ({
+  id: "valid_id",
+  title: "Advanced JavaScript Course",
+  description: "Learn advanced concepts of JavaScript...",
+  price: 49.99,
+  imageUrl: "https://example.com/images/advanced-javascript-course.jpg",
+  createdAt: new Date("2025-01-03"),
+  updatedAt: new Date("2025-01-03"),
+});
 
 const makeFakeRequest = (): HttpRequest => ({
   body: {
@@ -24,6 +35,7 @@ const makeFakeModule = (): ModuleModel => ({
   description:
     "In this module, we will be concentrating on JavaScript classes.",
   orderNumber: 1,
+  course: makeFakeCourse(),
   createdAt: new Date("2025-01-03"),
   updatedAt: new Date("2025-01-03"),
 });

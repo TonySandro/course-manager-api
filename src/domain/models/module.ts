@@ -4,7 +4,9 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from "typeorm";
+import { CourseModel } from "./course";
 
 @Entity("modules")
 export class ModuleModel {
@@ -20,10 +22,10 @@ export class ModuleModel {
   @Column({ type: "int" })
   orderNumber: number;
 
-  //   @ManyToOne(() => CourseModel, (course) => course.modules, {
-  //     onDelete: "CASCADE",
-  //   })
-  //   course: CourseModel;
+  @ManyToOne(() => CourseModel, (course) => course.modules, {
+    onDelete: "CASCADE",
+  })
+  course: CourseModel;
 
   @CreateDateColumn({ type: "timestamp" })
   createdAt: Date;
