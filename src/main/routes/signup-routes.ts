@@ -5,6 +5,7 @@ import { makeLoginController } from "../factories/login/login-factory";
 import { makeAddCourseController } from "../factories/add-course/add-course";
 import { makeListCourseController } from "../factories/list-course/list-course";
 import { makeAddModuleController } from "../factories/add-module/add-module-factory";
+import { makeListModuleController } from "../factories/list-module/list-course-factory";
 
 export default (router: Router): void => {
   router.post("/signup", adaptRoute(makeSignUpController()));
@@ -14,4 +15,5 @@ export default (router: Router): void => {
   router.get("/list-course", adaptRoute(makeListCourseController()));
 
   router.post("/add-module", adaptRoute(makeAddModuleController()));
+  router.post("/list-module", adaptRoute(makeListModuleController()));
 };
