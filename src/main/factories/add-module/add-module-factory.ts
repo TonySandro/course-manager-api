@@ -9,11 +9,11 @@ import { makeAddModuleValidation } from "./add-module-validation";
 export const makeAddModuleController = (): Controller => {
   const addModuleRepository = new ModuleMysqlRepository();
   const addModule = new DbAddModule(addModuleRepository);
-  const signUpController = new AddModuleController(
+  const addModuleController = new AddModuleController(
     addModule,
     makeAddModuleValidation()
   );
   const logMysqlRepository = new LogMysqlRepository();
 
-  return new LogControllerDecorator(signUpController, logMysqlRepository);
+  return new LogControllerDecorator(addModuleController, logMysqlRepository);
 };
