@@ -1,7 +1,11 @@
 import { ListModuleController } from "./list-module-controller";
 import { ModuleModel } from "../../../domain/models/module";
-import { serverError, success } from "../../helpers/http/http-helper";
-import { ServerError } from "../../errors";
+import {
+  badRequest,
+  serverError,
+  success,
+} from "../../helpers/http/http-helper";
+import { MissingParamError, ServerError } from "../../errors";
 import { ListModule } from "../../../domain/usecases/list-module";
 import { CourseModel } from "../../../domain/models/course";
 
@@ -53,7 +57,19 @@ const makeSut = (): SutTypes => {
 };
 
 describe("List Module Controller", () => {
-  test("Should return 500 if ListAccount throws", async () => {
+  test("Should return 400 if no courseId is provided", async () => {
+    const { sut } = makeSut();
+    const httpRequest = {
+      body: {
+        courseId: null,
+      },
+    };
+    const httpResponse = await sut.handle(httpRequest);
+
+    expect(httpResponse.body).toEqual(new MissingParamError("courseId"));
+  });
+
+  test("Should return 500 if ListModule throws", async () => {
     const { sut, listModuleStub } = makeSut();
     jest.spyOn(listModuleStub, "list").mockImplementationOnce(async () => {
       throw new Error();

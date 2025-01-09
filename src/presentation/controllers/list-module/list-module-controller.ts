@@ -1,5 +1,10 @@
 import { ListModule } from "../../../domain/usecases/list-module";
-import { serverError, success } from "../../helpers/http/http-helper";
+import { MissingParamError } from "../../errors";
+import {
+  badRequest,
+  serverError,
+  success,
+} from "../../helpers/http/http-helper";
 import { Controller, HttpRequest, HttpResponse } from "../../protocols";
 
 export class ListModuleController implements Controller {
@@ -7,7 +12,12 @@ export class ListModuleController implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const modules = await this.listModule.list(httpRequest.body.courseId);
+      const { courseId } = httpRequest.body;
+      if (!courseId) {
+        return badRequest(new MissingParamError("courseId"));
+      }
+
+      const modules = await this.listModule.list(courseId);
       return success(modules);
     } catch (error) {
       return serverError(error);
