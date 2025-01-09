@@ -68,7 +68,7 @@ const makeSut = (): SutTypes => {
 };
 
 describe("Add Course Controller", () => {
-  test("Should call AddAccount with correct values", async () => {
+  test("Should call AddCourse with correct values", async () => {
     const { sut, addCourseStub } = makeSut();
     const addSpy = jest.spyOn(addCourseStub, "add");
 
@@ -81,7 +81,7 @@ describe("Add Course Controller", () => {
     });
   });
 
-  test("Should return 500 if AddAccount throws", async () => {
+  test("Should return 500 if AddCourse throws", async () => {
     const { sut, addCourseStub } = makeSut();
     jest.spyOn(addCourseStub, "add").mockImplementationOnce(async () => {
       throw new Error();
