@@ -4,7 +4,7 @@ import { LogMysqlRepository } from "../../../infra/database/mysql/log/log-mysql-
 import { AddCourseController } from "../../../presentation/controllers/add-course/add-course-controller";
 import { CourseMysqlRepository } from "../../../infra/database/mysql/course-repository/course-mysql-repository";
 import { DbAddCourse } from "../../../data/usecases/add-course/db-add-course";
-import { makeAddCourseValidation } from "./add-course-validation";
+import { makeAddCourseValidation } from "./add-course-validation-factory";
 
 export const makeAddCourseController = (): Controller => {
   const addCourseRepository = new CourseMysqlRepository();

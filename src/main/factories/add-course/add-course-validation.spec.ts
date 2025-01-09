@@ -1,4 +1,4 @@
-import { makeAddCourseValidation } from "./add-course-validation";
+import { makeAddCourseValidation } from "./add-course-validation-factory";
 import { RequiredFieldValidation } from "../../../presentation/helpers/validators/required-field-validation";
 import { Validation } from "../../../presentation/helpers/validators/validation";
 import { ValidationComposite } from "../../../presentation/helpers/validators/validation-composite";

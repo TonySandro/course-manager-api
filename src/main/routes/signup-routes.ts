@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { makeSignUpController } from "../factories/signup/signup";
+import { makeSignUpController } from "../factories/signup/signup-factory";
 import { adaptRoute } from "../adapters/express/express-route-adapter";
 import { makeLoginController } from "../factories/login/login-factory";
-import { makeAddCourseController } from "../factories/add-course/add-course";
-import { makeListCourseController } from "../factories/list-course/list-course";
+import { makeAddCourseController } from "../factories/add-course/add-course-factory";
+import { makeListCourseController } from "../factories/list-course/list-course-factory";
 import { makeAddModuleController } from "../factories/add-module/add-module-factory";
 import { makeListModuleController } from "../factories/list-module/list-course-factory";
 

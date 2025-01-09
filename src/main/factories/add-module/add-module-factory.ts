@@ -4,7 +4,7 @@ import { LogMysqlRepository } from "../../../infra/database/mysql/log/log-mysql-
 import { AddModuleController } from "../../../presentation/controllers/add-module/add-module-controller";
 import { ModuleMysqlRepository } from "../../../infra/database/mysql/module-repository/module-mysql-repository";
 import { DbAddModule } from "../../../data/usecases/add-module/db-add-module";
-import { makeAddModuleValidation } from "./add-module-validation";
+import { makeAddModuleValidation } from "./add-module-validation-factory";
 
 export const makeAddModuleController = (): Controller => {
   const addModuleRepository = new ModuleMysqlRepository();
