@@ -1,5 +1,5 @@
 {
-  "name": "course-platform",
+  "name": "course-manager-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,12 +17,10 @@
     "test:ci": "yarn test --coverage"
   },
   "keywords": [],
-  "author": "Tony Duarte",
+  "author": "Tony S. Duarte A.",
   "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "express": "^4.21.1",
-    "jsonwebtoken": "^9.0.2",
+  "dependencies": { 
+    "express": "^4.21.1", 
     "mongodb": "^6.9.0",
     "mysql2": "^3.11.5",
     "typeorm": "^0.3.20",
@@ -31,10 +29,8 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.1",
     "@shelf/jest-mongodb": "^4.3.2",
-    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
-    "@types/jest": "^29.5.13",
-    "@types/jsonwebtoken": "^9.0.7",
+    "@types/jest": "^29.5.13", 
     "@types/mongodb": "^4.0.7",
     "@types/mysql": "^2.15.26",
     "@types/node": "^22.7.4",
